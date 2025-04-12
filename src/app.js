@@ -8,6 +8,7 @@ import sessionsRouter from "./routes/sessions.router.js";
 import mocksRouter from "./routes/mocks.router.js";
 import __dirname from "./utils/index.js";
 import dotenv from "dotenv";
+import { specs, swaggerUiExpress } from './config/swagger.js';
 dotenv.config();
 
 const app = express();
@@ -23,5 +24,8 @@ app.use("/api/pets", petsRouter);
 app.use("/api/adoptions", adoptionsRouter);
 app.use("/api/sessions", sessionsRouter);
 app.use("/api/mocks", mocksRouter);
+app.use('/api/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(specs));
 
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+export default app;
+// app.listen(PORT, () => console.log(`Listening on ${PORT}`));
