@@ -13,11 +13,9 @@ export default class UserRepository extends GenericRepository{
     }
     
     crearVarios = (coleccionUsuarios) => {
-        // Registrar en log la operación
         const timestamp = new Date().toISOString();
         console.log(`[${timestamp}] Iniciando creación masiva de ${coleccionUsuarios.length} usuarios`);
         
-        // Validar direcciones de correo únicas antes de insertar
         const emails = coleccionUsuarios.map(usuario => usuario.email);
         const emailsUnicos = new Set(emails);
         
@@ -25,7 +23,6 @@ export default class UserRepository extends GenericRepository{
             console.warn("Advertencia: Se detectaron correos electrónicos duplicados en la colección");
         }
         
-        // Procesar la creación
         return this.dao.saveMany(coleccionUsuarios)
             .then(resultado => {
                 console.log(`Creación masiva completada: ${resultado.length} usuarios insertados`);

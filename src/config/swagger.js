@@ -25,7 +25,7 @@ const swaggerOptions = {
             }
         ]
     },
-    apis: ['./src/routes/*.js'], // Asegurate que la ruta apunte a donde están tus routers
+    apis: ['./src/routes/*.js'], 
 };
 
 const specs = swaggerJSDoc(swaggerOptions);
